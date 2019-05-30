@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 // const admin = require("firebase-admin");
-
+const cors = require("cors");
 const router = require("./api");
 const { logger } = require("./utils/logger");
 const { errorHandler } = require("./middleware/error-handler");
@@ -14,6 +14,7 @@ const port = process.env.PORT || 8081;
 
 logger.info("🤖 Initializing middleware");
 
+app.use(cors());
 app.use(morgan("tiny", { stream: logger.stream }));
 app.use("/", router);
 app.use(errorHandler);
