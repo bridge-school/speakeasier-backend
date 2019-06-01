@@ -19,14 +19,11 @@ const getConferencesController = (req, res) => {
 }
 
 const postConferenceController = (req, res) => {
-	console.log("=====================REQ BODY====================")
-	console.log(req.body)
 	db.collection("conferences")
 		.add({
 			...req.body
 		})
 		.then(docRef => {
-			console.log(docRef)
 			res.status(201)
 				.json({
 					id: docRef.id,
