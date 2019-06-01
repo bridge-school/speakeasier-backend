@@ -16,6 +16,7 @@ logger.info("🤖 Initializing middleware");
 
 app.use(cors());
 app.use(morgan("tiny", { stream: logger.stream }));
+app.use(express.json());
 app.use("/", router);
 app.use(errorHandler);
 
