@@ -2,6 +2,7 @@ const db = require('../../db');
 
 const getConferencesController = (req, res) => {
 	db.collection("conferences")
+    .orderBy("createdAt", "asc")
     .get()
     .then(snapshot => {
       res.json({
