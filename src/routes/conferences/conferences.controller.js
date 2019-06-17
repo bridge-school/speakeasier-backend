@@ -49,8 +49,21 @@ const postConference = (req, res) => {
     });
 };
 
+const deleteConference = (req, res) => {
+  db.collection('conferences').doc(req.body.id)
+    .delete()
+    .then(() => {
+      res.status(200)
+        .json(`${req.body.id} deleted!`);
+    })
+    .catch(error => {
+      res.json({ error });
+    });
+};
+
 module.exports = {
   getConferences,
   getConferenceDetails,
-  postConference
+  postConference,
+  deleteConference
 };
